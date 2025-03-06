@@ -11,3 +11,6 @@ terraform plan
 terraform apply
 
 terraform init --upgrade
+
+tflint --init
+tflint --recursive

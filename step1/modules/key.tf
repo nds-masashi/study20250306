@@ -1,10 +1,8 @@
-# 秘密鍵のアルゴリズム設定
 resource "tls_private_key" "learn_ec2_private_key" {
   algorithm = "RSA"
-  rsa_bits  = 2048
+  rsa_bits  = 4096
 }
 
-# 上記で作成した公開鍵をAWSのKey pairにインポート
 resource "aws_key_pair" "learn_ec2_keypair" {
   key_name   = var.keyName
   public_key = tls_private_key.learn_ec2_private_key.public_key_openssh

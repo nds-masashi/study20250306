@@ -22,7 +22,7 @@ resource "aws_iam_instance_profile" "ec2_instance_profile" {
 resource "aws_instance" "ec2" {
   ami                    = "ami-0e2612a08262410c8" # AmazonLinux
   instance_type          = "t2.micro"
-  subnet_id              = var.defaultSubnetId
+  subnet_id              = data.aws_subnet.subnet.id
   vpc_security_group_ids = [aws_security_group.ec2_sg.id]
   iam_instance_profile   = aws_iam_instance_profile.ec2_instance_profile.name
   key_name               = var.keyName
